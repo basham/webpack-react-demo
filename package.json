@@ -1,0 +1,19 @@
+{
+  "name": "webpack-lab",
+  "version": "1.0.0",
+  "description": "Experiments with determining how to use Webpack",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/basham/webpack-lab.git"
+  },
+  "author": "Chris Basham <chris@bash.am>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/basham/webpack-lab/issues"
+  },
+  "homepage": "https://github.com/basham/webpack-lab#readme"
+}
