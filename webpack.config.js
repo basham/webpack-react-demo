@@ -11,13 +11,17 @@ module.exports = {
   module: {
     loaders: [
       {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        loaders: ['react-hot', 'babel']
+        test: /\.css$/,
+        loader: 'style!css?modules&localIdentName=[path][local]_[hash:base64:5]'
       },
       {
         test: /\.html$/,
         loader: 'file?name=[name].[ext]'
+      },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loaders: ['react-hot', 'babel']
       }
     ]
   }
