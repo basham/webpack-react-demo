@@ -1,5 +1,10 @@
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
+var paths = {
+  reactLib: __dirname + '/node_modules/react/lib',
+  react: __dirname + '/node_modules/react/dist/react.min.js'
+};
+
 module.exports = {
   context: __dirname + '/src',
   entry: {
@@ -11,6 +16,10 @@ module.exports = {
     path: __dirname + '/build'
   },
   resolve: {
+    alias: {
+      'react/lib': paths.reactLib,
+      'react': paths.react
+    },
     extensions: ['', '.js', '.jsx']
   },
   plugins: [
@@ -39,6 +48,7 @@ module.exports = {
         test: /\.svg$/,
         loader: 'raw'
       }
-    ]
+    ],
+    noParse: [paths.react]
   }
 };
