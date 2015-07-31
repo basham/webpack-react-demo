@@ -5,6 +5,7 @@
   "private": true,
   "scripts": {
     "start": "rm -rf ./build & ./node_modules/webpack/bin/webpack.js & ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --hot --inline",
+    "release": "./node_modules/webpack/bin/webpack.js -p",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

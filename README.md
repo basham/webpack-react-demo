@@ -13,6 +13,14 @@ npm install
 npm start
 ```
 
+## Release for production
+
+```
+npm run release
+```
+
+Outputs files to `./build`.
+
 ## Resources
 
 - [*Setting Up Webpack for React and Hot Module Replacement*](https://robots.thoughtbot.com/setting-up-webpack-for-react-and-hot-module-replacement)
