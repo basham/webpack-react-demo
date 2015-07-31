@@ -1,16 +1,25 @@
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+
 module.exports = {
   context: __dirname + '/src',
   entry: {
     main: './main.js',
-    index: './index.html'
+    cycle: './cycle.js'
   },
   output: {
-    filename: 'main.js',
+    filename: '[name].js',
     path: __dirname + '/build'
   },
   resolve: {
     extensions: ['', '.js', '.jsx']
   },
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: 'Webpack Demo',
+      inject: true,
+      template: './src/index.html'
+    })
+  ],
   module: {
     loaders: [
       {
