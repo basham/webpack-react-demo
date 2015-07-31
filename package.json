@@ -4,8 +4,10 @@
   "description": "Experiments with determining how to use Webpack",
   "private": true,
   "scripts": {
-    "start": "rm -rf ./build & ./node_modules/webpack/bin/webpack.js & ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --hot --inline",
-    "release": "./node_modules/webpack/bin/webpack.js -p",
+    "start": "npm run build && ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --hot --inline && open http://localhost:8080",
+    "clean": "rm -rf ./build",
+    "build": "npm run clean && ./node_modules/webpack/bin/webpack.js",
+    "release": "npm run clean && ./node_modules/webpack/bin/webpack.js -p",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
