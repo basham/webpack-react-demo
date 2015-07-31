@@ -8,6 +8,9 @@ module.exports = {
     filename: 'main.js',
     path: __dirname + '/build'
   },
+  resolve: {
+    extensions: ['', '.js', '.jsx']
+  },
   module: {
     loaders: [
       {
@@ -19,9 +22,13 @@ module.exports = {
         loader: 'file?name=[name].[ext]'
       },
       {
-        test: /\.js$/,
+        test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         loaders: ['react-hot', 'babel']
+      },
+      {
+        test: /\.svg$/,
+        loader: 'raw'
       }
     ]
   }
