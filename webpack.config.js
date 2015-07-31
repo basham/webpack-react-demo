@@ -1,3 +1,4 @@
+var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 var paths = {
@@ -9,7 +10,8 @@ module.exports = {
   context: __dirname + '/src',
   entry: {
     main: './main.js',
-    cycle: './cycle.js'
+    cycle: './cycle.js',
+    vendors: ['react']
   },
   output: {
     filename: '[name].js',
@@ -23,6 +25,7 @@ module.exports = {
     extensions: ['', '.js', '.jsx']
   },
   plugins: [
+    new webpack.optimize.CommonsChunkPlugin('vendors', 'vendors.js'),
     new HtmlWebpackPlugin({
       title: 'Webpack Demo',
       inject: true,
