@@ -32,6 +32,11 @@ module.exports = {
     },
     extensions: ['', '.js', '.jsx']
   },
+  resolveLoader: {
+    // Ensure dependencies in external packages will use this projects's loaders,
+    // instead of resolving to its loaders.
+    root: paths.node
+  },
   plugins: [
     // Merge vender libraries to single output.
     new webpack.optimize.CommonsChunkPlugin('vendors', 'vendors.js'),
