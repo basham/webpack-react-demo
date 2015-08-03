@@ -2,12 +2,18 @@ var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 var paths = {
-  reactLib: __dirname + '/node_modules/react/lib',
-  react: __dirname + '/node_modules/react/dist/react.min.js'
+  node: __dirname + '/node_modules',
+  source: __dirname + '/src',
+  build: __dirname + '/build'
+};
+
+var deps = {
+  'react/lib': paths.node + '/react/lib',
+  react: paths.node + '/react/dist/react.min.js'
 };
 
 module.exports = {
-  context: __dirname + '/src',
+  context: paths.source,
   entry: {
     main: './main.js',
     cycle: './cycle.js',
@@ -15,12 +21,12 @@ module.exports = {
   },
   output: {
     filename: '[name].js',
-    path: __dirname + '/build'
+    path: paths.build
   },
   resolve: {
     alias: {
-      'react/lib': paths.reactLib,
-      'react': paths.react
+      'react/lib': deps['react/lib'],
+      'react': deps.react
     },
     extensions: ['', '.js', '.jsx']
   },
@@ -29,7 +35,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: 'Webpack Demo',
       inject: true,
-      template: './src/index.html'
+      template: paths.source + '/index.html'
     })
   ],
   module: {
@@ -52,6 +58,6 @@ module.exports = {
         loader: 'raw'
       }
     ],
-    noParse: [paths.react]
+    noParse: [deps.react]
   }
 };
