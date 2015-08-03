@@ -17,7 +17,7 @@ module.exports = {
   entry: {
     main: './main.js',
     cycle: './cycle.js',
-    vendors: ['react']
+    vendors: ['react', 'classnames']
   },
   output: {
     filename: '[name].js',
@@ -42,7 +42,7 @@ module.exports = {
     loaders: [
       {
         test: /\.(css|less)$/,
-        loader: 'style!css?modules&localIdentName=[path][local]_[hash:base64:5]!less'
+        loader: 'style!css?modules&localIdentName=[path][local]_[hash:base64:5]!autoprefixer!less'
       },
       {
         test: /\.html$/,

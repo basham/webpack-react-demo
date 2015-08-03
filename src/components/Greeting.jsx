@@ -7,7 +7,7 @@ export default class Greeting extends Component {
   render() {
     return (
       <div className={styles.Greeting}>
-        <Icon/>
+        <Icon className={styles['Greeting-icon']}/>
         Hello, {this.props.name}!
       </div>
     );
