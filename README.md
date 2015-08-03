@@ -29,3 +29,4 @@ Outputs files to `./build`.
 - [*React Webpack Cookbook*](https://christianalfoni.github.io/react-webpack-cookbook/)
 - [`hjs-webpack`](https://github.com/HenrikJoreteg/hjs-webpack)
 - [`webpack-demo`](https://github.com/css-modules/webpack-demo)
+- [*How-to setup Webpack on an ES6 React Application with SASS?*](http://www.jonathan-petitcolas.com/2015/05/15/howto-setup-webpack-on-es6-react-application-with-sass.html)
