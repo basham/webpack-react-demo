@@ -2,9 +2,9 @@ var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 var paths = {
+  build: __dirname + '/build',
   node: __dirname + '/node_modules',
-  source: __dirname + '/src',
-  build: __dirname + '/build'
+  source: __dirname + '/src'
 };
 
 var deps = {
@@ -17,6 +17,7 @@ module.exports = {
   entry: {
     main: './main.js',
     cycle: './cycle.js',
+    // List vender libraries to group.
     vendors: ['react', 'classnames']
   },
   output: {
@@ -26,12 +27,15 @@ module.exports = {
   resolve: {
     alias: {
       'react/lib': deps['react/lib'],
+      // React references should point to the minified version, rather than source.
       'react': deps.react
     },
     extensions: ['', '.js', '.jsx']
   },
   plugins: [
+    // Merge vender libraries to single output.
     new webpack.optimize.CommonsChunkPlugin('vendors', 'vendors.js'),
+    // Create `index.html` with appropriate references to generated files.
     new HtmlWebpackPlugin({
       title: 'Webpack Demo',
       inject: true,
@@ -58,6 +62,7 @@ module.exports = {
         loader: 'raw'
       }
     ],
+    // Don't parse the minified version of React, to save time in the build process.
     noParse: [deps.react]
   }
 };
