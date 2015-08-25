@@ -48,7 +48,7 @@ module.exports = {
     // Ignore injecting code with errors.
     new webpack.NoErrorsPlugin(),
     // Merge vender libraries to single output.
-    new webpack.optimize.CommonsChunkPlugin('vendors', 'vendors.js'),
+    new webpack.optimize.CommonsChunkPlugin('vendors'),
     // Create `index.html` with appropriate references to generated files.
     new HtmlWebpackPlugin({
       title: 'Webpack Demo',
