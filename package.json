@@ -4,10 +4,10 @@
   "description": "Experiments with determining how to use Webpack",
   "private": true,
   "scripts": {
-    "start": "npm run build && ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
+    "start": "./node_modules/webpack-dev-server/bin/webpack-dev-server.js --config webpack.dev.config.js",
     "clean": "rm -rf ./build",
-    "build": "npm run clean && ./node_modules/webpack/bin/webpack.js",
-    "release": "npm run clean && ./node_modules/webpack/bin/webpack.js -p",
+    "build": "npm run clean && ./node_modules/webpack/bin/webpack.js --config webpack.dev.config.js",
+    "release": "npm run clean && ./node_modules/webpack/bin/webpack.js --config webpack.production.config.js -p",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
