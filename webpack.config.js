@@ -19,7 +19,10 @@ module.exports = {
       './main.js'
     ],
     // List vender libraries.
-    vendors: ['react', 'classnames']
+    vendors: [
+      'classnames',
+      'react'
+    ]
   },
   output: {
     filename: '[name].js',
