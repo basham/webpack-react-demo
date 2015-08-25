@@ -3,5 +3,5 @@ import Greeting from './components/Greeting';
 
 React.render(
   <Greeting name="World"/>,
-  document.body.querySelector('.main')
+  document.body.querySelector('#app')
 );

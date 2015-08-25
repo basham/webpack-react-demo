@@ -16,7 +16,6 @@ module.exports = {
   context: paths.source,
   entry: {
     main: './main.js',
-    cycle: './cycle.js',
     // List vender libraries to group.
     vendors: ['react', 'classnames']
   },
