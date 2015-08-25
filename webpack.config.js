@@ -63,7 +63,12 @@ module.exports = {
     loaders: [
       {
         test: /\.(css|less)$/,
-        loader: 'style!css?modules&localIdentName=[path][local]_[hash:base64:5]!autoprefixer!less'
+        loaders: [
+          'style',
+          'css?modules&localIdentName=[path][local]_[hash:base64:5]',
+          'autoprefixer',
+          'less'
+        ]
       },
       {
         test: /\.html$/,
@@ -72,7 +77,10 @@ module.exports = {
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        loaders: ['react-hot', 'babel']
+        loaders: [
+          'react-hot',
+          'babel'
+        ]
       },
       {
         test: /\.svg$/,
