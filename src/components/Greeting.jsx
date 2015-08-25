@@ -9,7 +9,7 @@ export default class Greeting extends Component {
     return (
       <div className={styles.Greeting}>
         <Icon className={styles['Greeting-icon']}/>
-        Hello, {this.props.name}!
+        HelloXX, {this.props.name}!
         <Button></Button>
       </div>
     );

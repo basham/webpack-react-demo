@@ -7,6 +7,11 @@ var paths = {
   source: __dirname + '/src'
 };
 
+var deps = {
+  'react/lib': paths.node + '/react/lib',
+  react: paths.node + '/react/dist/react.min.js'
+};
+
 module.exports = {
   context: paths.source,
   entry: {
@@ -29,9 +34,11 @@ module.exports = {
     path: paths.build
   },
   resolve: {
+    // Force all references to React from an external source to point a single path.
     alias: {
-      // Force all references to React from an external source to point a single path.
-      'react': paths.node + '/react'
+      'react/lib': deps['react/lib'],
+      // React references should point to the minified version, rather than source.
+      'react': deps.react
     },
     extensions: ['', '.js', '.jsx']
   },
@@ -51,7 +58,7 @@ module.exports = {
     // Ignore injecting code with errors.
     new webpack.NoErrorsPlugin(),
     // Merge vender libraries to single output.
-    new webpack.optimize.CommonsChunkPlugin('vendors.js'),
+    new webpack.optimize.CommonsChunkPlugin('vendors', 'vendors.js'),
     // Create `index.html` with appropriate references to generated files.
     new HtmlWebpackPlugin({
       title: 'Webpack Demo',
@@ -86,6 +93,8 @@ module.exports = {
         test: /\.svg$/,
         loader: 'raw'
       }
-    ]
+    ],
+    // Don't parse the minified version of React, to save time in the build process.
+    noParse: [deps.react]
   }
 };
