@@ -23,7 +23,8 @@ module.exports = {
   },
   output: {
     filename: '[name].js',
-    path: paths.output
+    path: paths.output,
+    pathInfo: true
   },
   resolve: {
     alias: {
@@ -42,6 +43,10 @@ module.exports = {
     hot: true,
     noInfo: true
   },
+  // Set loaders to debug mode.
+  debug: true,
+  // Generate source maps, so its easier to find errors in code.
+  devtool: 'cheap-module-eval-source-map',
   plugins: [
     // Define global variables that will be replaced inline during compile.
     new webpack.DefinePlugin({
