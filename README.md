@@ -13,7 +13,7 @@ npm install
 npm start
 ```
 
-After starting development mode, open a browser to http://localhost:8080.
+After starting development mode, open a browser to [http://localhost:8080](http://localhost:8080).
 
 Includes [`react-hot-loader`](https://github.com/gaearon/react-hot-loader).
 
