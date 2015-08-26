@@ -13,13 +13,23 @@ npm install
 npm start
 ```
 
+Includes [`react-hot-loader`](https://github.com/gaearon/react-hot-loader).
+
+## Build development target
+
+```
+npm run build
+```
+
+Outputs files to `./build`. This output is identical to what is continuously compiled when in development mode.
+
 ## Release for production
 
 ```
 npm run release
 ```
 
-Outputs files to `./build`.
+Outputs files to `./release`. Vender code is separated from application code, and all code is minified.
 
 ## Resources
 

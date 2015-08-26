@@ -1,28 +1,15 @@
 var webpack = require('webpack');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 var paths = {
-  build: __dirname + '/build',
   node: __dirname + '/node_modules',
-  source: __dirname + '/src'
-};
-
-var deps = {
-  'react/lib': paths.node + '/react/lib',
-  react: paths.node + '/react/dist/react.min.js'
+  source: __dirname + '/src',
+  output: __dirname + '/release'
 };
 
 module.exports = {
   context: paths.source,
   entry: {
-    main: [
-      // WebpackDevServer host and port.
-      'webpack-dev-server/client?http://localhost:8080',
-      // Hot module reloading behavior. Ignores automatic browser refreshes.
-      'webpack/hot/only-dev-server',
-      // Main entry point.
-      './main.js'
-    ],
+    main: './main.js',
     // List vender libraries.
     vendors: [
       'classnames',
@@ -31,14 +18,12 @@ module.exports = {
   },
   output: {
     filename: '[name].js',
-    path: paths.build
+    path: paths.output
   },
   resolve: {
-    // Force all references to React from an external source to point a single path.
     alias: {
-      'react/lib': deps['react/lib'],
-      // React references should point to the minified version, rather than source.
-      'react': deps.react
+      // Force all references to React from an external source to point a single path.
+      'react': paths.node + '/react'
     },
     extensions: ['', '.js', '.jsx']
   },
@@ -47,24 +32,23 @@ module.exports = {
     // instead of resolving to its loaders.
     root: paths.node
   },
-  // WebpackDevServer config.
-  devServer: {
-    hot: true,
-    noInfo: true
-  },
   plugins: [
-    // Enable hot module replacement.
-    new webpack.HotModuleReplacementPlugin(),
-    // Ignore injecting code with errors.
-    new webpack.NoErrorsPlugin(),
+    // removes a lot of debugging code in React.
+    new webpack.DefinePlugin({
+      'process.env': {
+        'NODE_ENV': JSON.stringify('production')
+      }
+    }),
+    // Keeps hashes consistent between compilations.
+    new webpack.optimize.OccurenceOrderPlugin(),
+    // Minifies code.
+    new webpack.optimize.UglifyJsPlugin({
+      compressor: {
+        warnings: false
+      }
+    }),
     // Merge vender libraries to single output.
-    new webpack.optimize.CommonsChunkPlugin('vendors', 'vendors.js'),
-    // Create `index.html` with appropriate references to generated files.
-    new HtmlWebpackPlugin({
-      title: 'Webpack Demo',
-      inject: true,
-      template: paths.source + '/index.html'
-    })
+    new webpack.optimize.CommonsChunkPlugin('vendors', 'vendors.js')
   ],
   module: {
     loaders: [
@@ -72,29 +56,20 @@ module.exports = {
         test: /\.(css|less)$/,
         loaders: [
           'style',
-          'css?modules&localIdentName=[path][local]_[hash:base64:5]',
+          'css?modules&localIdentName=[hash:base64:5]',
           'autoprefixer',
           'less'
         ]
       },
       {
-        test: /\.html$/,
-        loader: 'file?name=[name].[ext]'
-      },
-      {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        loaders: [
-          'react-hot',
-          'babel'
-        ]
+        loader: 'babel'
       },
       {
         test: /\.svg$/,
         loader: 'raw'
       }
-    ],
-    // Don't parse the minified version of React, to save time in the build process.
-    noParse: [deps.react]
+    ]
   }
 };

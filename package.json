@@ -5,9 +5,8 @@
   "private": true,
   "scripts": {
     "start": "./node_modules/webpack-dev-server/bin/webpack-dev-server.js --config webpack.dev.config.js",
-    "clean": "rm -rf ./build",
-    "build": "npm run clean && ./node_modules/webpack/bin/webpack.js --config webpack.dev.config.js",
-    "release": "npm run clean && ./node_modules/webpack/bin/webpack.js --config webpack.production.config.js -p",
+    "build": "rm -rf ./build && ./node_modules/webpack/bin/webpack.js --config webpack.dev.config.js",
+    "release": "rm -rf ./release && ./node_modules/webpack/bin/webpack.js --config webpack.production.config.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
