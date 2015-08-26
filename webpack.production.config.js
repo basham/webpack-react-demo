@@ -33,7 +33,7 @@ module.exports = {
     root: paths.node
   },
   plugins: [
-    // removes a lot of debugging code in React.
+    // Removes a lot of debugging code in React.
     new webpack.DefinePlugin({
       'process.env': {
         'NODE_ENV': JSON.stringify('production')
