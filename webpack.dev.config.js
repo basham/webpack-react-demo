@@ -45,7 +45,7 @@ module.exports = {
   plugins: [
     // Define global variables that will be replaced inline during compile.
     new webpack.DefinePlugin({
-      CONTAINER_ID: JSON.stringify(pkg.config.containerId),
+      CONTAINER_ID: JSON.stringify(pkg.config.containerId)
     }),
     // Enable hot module replacement.
     new webpack.HotModuleReplacementPlugin(),
@@ -76,7 +76,9 @@ module.exports = {
       },
       {
         test: /\.(js|jsx)$/,
-        exclude: /node_modules/,
+        // Ignore processing any node modules except for explicit ones.
+        // This speeds development and prevents potential issues.
+        exclude: /node_modules\/(?!iu-ess)/,
         loaders: [
           'react-hot',
           'babel'
