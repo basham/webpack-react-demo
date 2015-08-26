@@ -1,6 +1,7 @@
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
-var title = require('./package.json').name;
+
+var pkg = require('./package.json');
 
 var paths = {
   node: __dirname + '/node_modules',
@@ -42,13 +43,18 @@ module.exports = {
     noInfo: true
   },
   plugins: [
+    // Define global variables that will be replaced inline during compile.
+    new webpack.DefinePlugin({
+      CONTAINER_ID: JSON.stringify(pkg.config.containerId),
+    }),
     // Enable hot module replacement.
     new webpack.HotModuleReplacementPlugin(),
     // Ignore injecting code with errors.
     new webpack.NoErrorsPlugin(),
     // Create `index.html` with appropriate references to generated files.
     new HtmlWebpackPlugin({
-      title: title,
+      title: pkg.name,
+      containerId: pkg.config.containerId,
       inject: true,
       template: paths.source + '/index.html'
     })

@@ -1,5 +1,7 @@
 var webpack = require('webpack');
 
+var pkg = require('./package.json');
+
 var paths = {
   node: __dirname + '/node_modules',
   source: __dirname + '/src',
@@ -33,8 +35,10 @@ module.exports = {
     root: paths.node
   },
   plugins: [
-    // Removes a lot of debugging code in React.
+    // Define global variables that will be replaced inline during compile.
     new webpack.DefinePlugin({
+      CONTAINER_ID: JSON.stringify(pkg.config.containerId),
+      // Removes a lot of debugging code in React.
       'process.env': {
         'NODE_ENV': JSON.stringify('production')
       }
