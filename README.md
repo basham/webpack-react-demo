@@ -1,4 +1,4 @@
-# webpack-lab
+# webpack-react-demo
 Experiments with determining how to use Webpack and React.
 
 ## Installation
