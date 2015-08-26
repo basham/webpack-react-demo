@@ -1,5 +1,6 @@
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var title = require('./package.json').name;
 
 var paths = {
   node: __dirname + '/node_modules',
@@ -47,7 +48,7 @@ module.exports = {
     new webpack.NoErrorsPlugin(),
     // Create `index.html` with appropriate references to generated files.
     new HtmlWebpackPlugin({
-      title: 'Webpack Demo',
+      title: title,
       inject: true,
       template: paths.source + '/index.html'
     })
