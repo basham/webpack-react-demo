@@ -12,13 +12,13 @@ var paths = {
 module.exports = {
   context: paths.source,
   entry: {
-    main: [
+    app: [
       // WebpackDevServer host and port.
       'webpack-dev-server/client?http://localhost:8080',
       // Hot module reloading behavior. Ignores automatic browser refreshes.
       'webpack/hot/only-dev-server',
       // Main entry point.
-      './main.js'
+      './index.js'
     ]
   },
   output: {

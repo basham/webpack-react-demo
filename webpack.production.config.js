@@ -11,7 +11,7 @@ var paths = {
 module.exports = {
   context: paths.source,
   entry: {
-    main: './main.js',
+    app: './index.js',
     // List vender libraries.
     vendor: [
       'classnames',
