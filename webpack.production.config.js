@@ -13,7 +13,7 @@ module.exports = {
   entry: {
     main: './main.js',
     // List vender libraries.
-    vendors: [
+    vendor: [
       'classnames',
       'react'
     ]
@@ -52,7 +52,7 @@ module.exports = {
       }
     }),
     // Merge vender libraries to single output.
-    new webpack.optimize.CommonsChunkPlugin('vendors', 'vendors.js')
+    new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.js')
   ],
   module: {
     loaders: [
