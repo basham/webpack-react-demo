@@ -27,10 +27,6 @@ module.exports = {
     pathInfo: true
   },
   resolve: {
-    alias: {
-      // Force all references to React from an external source to point a single path.
-      'react': paths.node + '/react'
-    },
     extensions: ['', '.js', '.jsx']
   },
   resolveLoader: {
