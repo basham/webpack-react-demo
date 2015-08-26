@@ -1,5 +1,5 @@
 # webpack-lab
-Experiments with determining how to use Webpack
+Experiments with determining how to use Webpack and React.
 
 ## Installation
 

@@ -1,7 +1,7 @@
 {
-  "name": "webpack-lab",
+  "name": "webpack-react-demo",
   "version": "1.0.0",
-  "description": "Experiments with determining how to use Webpack",
+  "description": "Experiments with determining how to use Webpack and React",
   "private": true,
   "scripts": {
     "start": "./node_modules/webpack-dev-server/bin/webpack-dev-server.js --config webpack.dev.config.js",
