@@ -4,10 +4,9 @@
   "description": "Experiments with determining how to use Webpack and React",
   "private": true,
   "scripts": {
-    "start": "npm run open && ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --config webpack.dev.config.js",
-    "build": "rm -rf ./build && ./node_modules/webpack/bin/webpack.js --config webpack.dev.config.js",
-    "release": "rm -rf ./release && ./node_modules/webpack/bin/webpack.js --config webpack.production.config.js",
-    "open": "open http://localhost:8080"
+    "start": "node ./scripts/start",
+    "build": "node ./scripts/build",
+    "release": "node ./scripts/release"
   },
   "repository": {
     "type": "git",

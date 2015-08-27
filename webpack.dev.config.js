@@ -1,20 +1,25 @@
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var path = require('path');
 
 var pkg = require('./package.json');
 
 var paths = {
-  node: __dirname + '/node_modules',
-  source: __dirname + '/src',
-  output: __dirname + '/build'
+  node: path.join(__dirname, 'node_modules'),
+  source: path.join(__dirname, 'src'),
+  output: path.join(__dirname, 'build')
 };
+
+var address = 'localhost';
+var port = 8080;
+var url = 'http://' + address + ':' + port;
 
 module.exports = {
   context: paths.source,
   entry: {
     app: [
       // WebpackDevServer host and port.
-      'webpack-dev-server/client?http://localhost:8080',
+      'webpack-dev-server/client?' + url,
       // Hot module reloading behavior. Ignores automatic browser refreshes.
       'webpack/hot/only-dev-server',
       // Main entry point.
@@ -36,8 +41,11 @@ module.exports = {
   },
   // WebpackDevServer config.
   devServer: {
+    address: address,
     hot: true,
-    noInfo: true
+    noInfo: true,
+    port: port,
+    url: url
   },
   // Set loaders to debug mode.
   debug: true,
@@ -79,7 +87,10 @@ module.exports = {
         test: /\.(js|jsx)$/,
         // Ignore processing any node modules except for explicit ones.
         // This speeds development and prevents potential issues.
-        exclude: /node_modules\/(?!iu-ess)/,
+        include: [
+          paths.source,
+          path.join(paths.node, 'iu-ess-ux-components')
+        ],
         loaders: [
           'react-hot',
           'babel'

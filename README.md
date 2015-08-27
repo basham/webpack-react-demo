@@ -13,15 +13,9 @@ npm install
 npm start
 ```
 
-Includes [`react-hot-loader`](https://github.com/gaearon/react-hot-loader).
-
-## Open browser
-
-```
-npm run open
-```
-
 Opens the default browser to the development server, at [http://localhost:8080](http://localhost:8080).
+
+Includes [`react-hot-loader`](https://github.com/gaearon/react-hot-loader).
 
 ## Build development target
 

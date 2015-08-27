@@ -1,11 +1,12 @@
 var webpack = require('webpack');
+var path = require('path');
 
 var pkg = require('./package.json');
 
 var paths = {
-  node: __dirname + '/node_modules',
-  source: __dirname + '/src',
-  output: __dirname + '/release'
+  node: path.join(__dirname, 'node_modules'),
+  source: path.join(__dirname, 'src'),
+  output: path.join(__dirname, 'build')
 };
 
 module.exports = {
